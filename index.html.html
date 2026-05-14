@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlasticosHG | Geomembrana & Geotextil – Santiago de Chile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6e;
+      --accent: #f0a500;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --gray: #6b7a90;
+      --green: #2e7d5e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(10,22,40,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(240,165,0,0.15);
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+    .logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 5% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,58,110,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(240,165,0,0.08) 0%, transparent 60%);
+    }
+    .grid-overlay {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 650px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(240,165,0,0.15);
+      border: 1px solid rgba(240,165,0,0.4);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+      display: block;
+    }
+    .hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--navy);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,165,0,0.35); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); background: rgba(240,165,0,0.08); }
+
+    .hero-visual {
+      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+      z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 160px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-card:nth-child(2) { margin-top: 2rem; }
+    .hero-card:nth-child(4) { margin-top: -2rem; }
+    .hero-card .icon { font-size: 2rem; margin-bottom: 0.7rem; }
+    .hero-card h4 { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 0.5px; }
+    .hero-card p { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 0.3rem; line-height: 1.4; }
+
+    /* ─── STATS ─── */
+    .stats {
+      background: var(--accent);
+      padding: 2.5rem 5%;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .stat { text-align: center; color: var(--navy); }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.75; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 5%; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 1px;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    /* ─── PRODUCTS ─── */
+    #productos { background: rgba(255,255,255,0.02); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-6px); border-color: rgba(240,165,0,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+    .product-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.7rem; }
+    .product-card p { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.65; }
+    .product-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: rgba(240,165,0,0.12);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(240,165,0,0.25);
+    }
+
+    /* ─── GALLERY ─── */
+    #galeria { background: var(--navy); }
+    .gallery-intro { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 1rem;
+    }
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.5rem;
+    }
+    .gallery-placeholder .gi { font-size: 2.5rem; }
+    .gallery-placeholder span { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.8) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+
+    .photo-note {
+      margin-top: 1rem;
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+    }
+
+    /* ─── CONTACT ─── */
+    #contacto { background: rgba(26,58,110,0.15); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.2rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .contact-item .ci { font-size: 1.5rem; }
+    .contact-item h4 { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .contact-item p { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+    .contact-item a { color: rgba(255,255,255,0.65); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      background: rgba(240,165,0,0.06);
+    }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      background: var(--accent);
+      color: var(--navy);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(240,165,0,0.35); }
+
+    .whatsapp-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+      background: #25d366;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: rgba(0,0,0,0.4);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 5%;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    footer .logo { font-size: 1.2rem; }
+    footer p { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+    /* ─── SUCCESS MSG ─── */
+    .success-msg {
+      display: none;
+      background: rgba(46,125,94,0.2);
+      border: 1px solid rgba(46,125,94,0.5);
+      color: #6ee7b7;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-visual { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-row: span 1; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Plasticos<span>HG</span></div>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Cotizar ahora</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🏭 Plásticos Industriales de Alta Calidad</div>
+    <h1>GEOMEMBRANA<em>& GEOTEXTIL</em></h1>
+    <p>Soluciones en plásticos industriales para proyectos de ingeniería, construcción e infraestructura. Calidad garantizada, atención personalizada y despacho a todo el país.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">📋 Solicitar cotización</a>
+      <a href="#productos" class="btn-secondary">Ver productos →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="icon">🟦</div>
+      <h4>Geomembrana</h4>
+      <p>HDPE, LLDPE y PVC para impermeabilización</p>
+    </div>
+    <div class="hero-card">
+      <div class="icon">🧱</div>
+      <h4>Geotextil</h4>
+      <p>Tejido y no tejido para filtración y drenaje</p>
+    </div>
+    <div class="hero-card">
+      <div class="icon">🚚</div>
+      <h4>Envío Nacional</h4>
+      <p>Despacho rápido a todo el país</p>
+    </div>
+    <div class="hero-card">
+      <div class="icon">✅</div>
+      <h4>Certificado</h4>
+      <p>Productos con certificación de calidad</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Proyectos entregados</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Años de experiencia</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Calidad garantizada</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24h</div>
+    <div class="stat-label">Respuesta de cotización</div>
+  </div>
+</div>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="section-tag">Lo que ofrecemos</div>
+  <div class="section-title">NUESTROS PRODUCTOS</div>
+  <p class="section-sub">Contamos con una amplia gama de plásticos industriales para satisfacer las necesidades de tu proyecto.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">🟦</div>
+      <h3>Geomembrana HDPE</h3>
+      <p>Láminas impermeabilizantes de polietileno de alta densidad. Ideales para rellenos sanitarios, lagunas y embalses. Alta resistencia química y UV.</p>
+      <span class="product-tag">IMPERMEABILIZACIÓN</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🟩</div>
+      <h3>Geomembrana LLDPE</h3>
+      <p>Mayor flexibilidad que el HDPE. Perfecta para superficies irregulares, canales y proyectos que requieren adaptabilidad sin perder resistencia.</p>
+      <span class="product-tag">ALTA FLEXIBILIDAD</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🧵</div>
+      <h3>Geotextil No Tejido</h3>
+      <p>Fabricado con fibras de polipropileno punzonadas. Excelente para filtración, separación y drenaje en obras viales y civiles.</p>
+      <span class="product-tag">FILTRACIÓN</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🏗️</div>
+      <h3>Geotextil Tejido</h3>
+      <p>Alta resistencia a la tensión. Ideal para refuerzo de suelos, estabilización de taludes y proyectos de ingeniería geotécnica.</p>
+      <span class="product-tag">REFUERZO DE SUELOS</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">💧</div>
+      <h3>Geocompuestos</h3>
+      <p>Combinación de geomembrana y geotextil en un solo producto. Solución integral para proyectos que requieren impermeabilización y drenaje simultáneo.</p>
+      <span class="product-tag">SOLUCIÓN INTEGRAL</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">📦</div>
+      <h3>Otros Plásticos</h3>
+      <p>Mallas plásticas, tuberías corrugadas, láminas de PVC y demás insumos plásticos para la industria de la construcción e ingeniería.</p>
+      <span class="product-tag">CONSULTAR</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="gallery-intro">
+    <div>
+      <div class="section-tag">Nuestros trabajos</div>
+      <div class="section-title">GALERÍA</div>
+    </div>
+    <p class="section-sub" style="max-width:320px;">Proyectos entregados en distintas industrias y zonas del país.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gi">🏞️</div>
+        <span>Proyecto de laguna con geomembrana</span>
+      </div>
+      <div class="gallery-overlay"><span>Impermeabilización de laguna</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gi">🏗️</div>
+        <span>Obra vial con geotextil</span>
+      </div>
+      <div class="gallery-overlay"><span>Estabilización vial</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gi">♻️</div>
+        <span>Relleno sanitario</span>
+      </div>
+      <div class="gallery-overlay"><span>Relleno sanitario</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gi">💧</div>
+        <span>Canal de riego</span>
+      </div>
+      <div class="gallery-overlay"><span>Canal impermeabilizado</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div class="gi">🏔️</div>
+        <span>Estabilización de talud</span>
+      </div>
+      <div class="gallery-overlay"><span>Refuerzo de talud</span></div>
+    </div>
+  </div>
+  <p class="photo-note">📸 Agrega aquí las fotos reales de los proyectos de tu papá para darle más credibilidad</p>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-tag">Estamos para ayudarte</div>
+  <div class="section-title">CONTÁCTANOS</div>
+  <p class="section-sub">¿Tienes un proyecto en mente? Cotiza sin compromiso. Respondemos en menos de 24 horas.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="ci">📞</div>
+        <div>
+          <h4>Teléfono</h4>
+          <p><a href="tel:+56997829729">+56 9 9782 9729</a></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci">✉️</div>
+        <div>
+          <h4>Correo electrónico</h4>
+          <p><a href="mailto:hugo.sansuy.br@gmail.com">hugo.sansuy.br@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci">📍</div>
+        <div>
+          <h4>Ubicación</h4>
+          <p>Santiago de Chile<br><span style="font-size:0.8rem;color:rgba(255,255,255,0.35)">Atención y despacho a nivel nacional</span></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci">🕐</div>
+        <div>
+          <h4>Horario de atención</h4>
+          <p>Lun – Vie: 8:00 am – 6:00 pm<br>Sáb: 9:00 am – 1:00 pm</p>
+        </div>
+      </div>
+      <a href="https://wa.me/56997829729?text=Hola,%20me%20interesa%20cotizar%20sus%20productos%20de%20geomembrana%20y%20geotextil" target="_blank" class="whatsapp-btn">
+        💬 Escribir por WhatsApp
+      </a>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" placeholder="Juan Pérez" id="nombre"/>
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="+51 999 999 999" id="telefono"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tuemail@correo.com" id="email"/>
+        </div>
+        <div class="form-group">
+          <label>Producto de interés</label>
+          <select id="producto">
+            <option value="">Selecciona un producto...</option>
+            <option>Geomembrana HDPE</option>
+            <option>Geomembrana LLDPE</option>
+            <option>Geotextil No Tejido</option>
+            <option>Geotextil Tejido</option>
+            <option>Geocompuestos</option>
+            <option>Otro / Consulta general</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cuéntanos sobre tu proyecto</label>
+          <textarea placeholder="Describe brevemente tu proyecto, cantidades aproximadas y zona de instalación..." id="mensaje"></textarea>
+        </div>
+        <button class="form-submit" onclick="enviarFormulario()">
+          📋 Enviar solicitud de cotización
+        </button>
+        <div class="success-msg" id="successMsg">
+          ✅ ¡Mensaje enviado! Te contactaremos a la brevedad.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Plasticos<span>HG</span></div>
+  <p>© 2025 PlasticosHG. Todos los derechos reservados.</p>
+  <p style="color:rgba(255,255,255,0.2)">Geomembrana · Geotextil · Soluciones Industriales</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function enviarFormulario() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+    if (!nombre || !email || !mensaje) {
+      alert('Por favor completa los campos obligatorios: Nombre, Email y Mensaje.');
+      return;
+    }
+    // Aquí puedes integrar un servicio como EmailJS, Formspree, etc.
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 4000);
+  }
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelec
